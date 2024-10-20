@@ -1,0 +1,119 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header styling */
+header {
+    background-color: #0073e6;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Section styling */
+section {
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styling */
+.btn-container button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #005bb5;
+}
+
+button.hide {
+    display: none;
+}
+3. JavaScript Logic (script.js)
+This code manages the interactive elements of your website, such as the quiz functionality. It should be placed in your script.js file.
+
+If you already have a script.js file:
+
+Add the provided JavaScript code to the existing file, typically at the bottom.
+If you don’t have a script.js file yet:
+
+Create a new file named script.js in the same directory as your index.html and paste the provided JavaScript code into it.
+Example of where the JavaScript code goes:
+javascript
+Copy code
+/* Place this in script.js */
+
+const questions = [
+    {
+        question: 'What is the name of your company?',
+        answers: ['Option 1', 'Option 2', 'Option 3']
+    },
+    {
+        question: 'Which industry does your company belong to?',
+        answers: ['Automotive', 'IT', 'Healthcare']
+    },
+    // Add more questions as needed
+];
+
+const strategies = [
+    'Strategy 1: Data-as-a-Service',
+    'Strategy 2: Information-as-a-Service',
+    // Add more strategies here
+];
+
+let currentQuestionIndex = 0;
+
+const questionContainer = document.getElementById('question-container');
+const answerButtons = document.getElementById('answer-buttons');
+const nextButton = document.getElementById('next-btn');
+const strategyOutput = document.getElementById('strategy-output');
+const resultSection = document.getElementById('result');
+
+function startQuiz() {
+    showQuestion(questions[currentQuestionIndex]);
+}
+
+function showQuestion(question) {
+    questionContainer.innerText = question.question;
+    answerButtons.innerHTML = '';
+    question.answers.forEach(answer => {
+        const button = document.createElement('button');
+        button.innerText = answer;
+        button.addEventListener('click', selectAnswer);
+        answerButtons.appendChild(button);
+    });
+    nextButton.classList.remove('hide');
+}
+
+function selectAnswer(e) {
+    const selectedAnswer = e.target.innerText;
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        showQuestion(questions[currentQuestionIndex]);
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+    resultSection.classList.remove('hide');
+    questionContainer.classList.add('hide');
+    answerButtons.classList.add('hide');
+    nextButton.classList.add('hide');
+    strategyOutput.innerText = strategies[Math.floor(Math.random() * strategies.length)];
+}
+
+
+startQuiz();

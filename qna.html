@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A - Select Your Strategy</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Select Your Data Monetization Strategy</h1>
+        </div>
+    </header>
+
+    <section id="qna" class="qna">
+        <div class="container">
+            <h2>Answer the questions to determine the best strategy for your data</h2>
+
+            <!-- Container where questions will be loaded dynamically -->
+            <div id="questions-container"></div>
+
+            <!-- Button to go to the next question -->
+            <button id="next-btn" onclick="nextQuestion()" style="display:none;">Next</button>
+        </div>
+    </section>
+
+    <section id="result-section" class="result" style="display:none;">
+        <div class="container">
+            <h2>Your Best Matching Strategy is:</h2>
+            <p id="result"></p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Data Monetization Project. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
