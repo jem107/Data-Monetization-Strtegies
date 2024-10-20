@@ -3,7 +3,7 @@ let selectedAnswers = [];
 
 // Fetch the CSV file and load the questions
 document.addEventListener('DOMContentLoaded', function () {
-    const csvUrl = 'qaFinal.csv';
+    const csvUrl = 'https://github.com/jem107/Data-Monetization-Strtegies/blob/main/qaFinal.csv';
 
     fetch(csvUrl)
         .then(response => {
